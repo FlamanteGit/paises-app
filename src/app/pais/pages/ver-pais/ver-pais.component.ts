@@ -8,9 +8,8 @@ import { PaisService } from '../../services/pais.service';
   templateUrl: './ver-pais.component.html',
 })
 export class VerPaisComponent implements OnInit {
-
   pais!: Country;
-   
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private paisService: PaisService
@@ -20,7 +19,7 @@ export class VerPaisComponent implements OnInit {
     this.activatedRoute.params.subscribe(({ id }) => {
       console.log(id);
       this.paisService.getPaisPorAlpha(id).subscribe((pais) => {
-        console.log(pais);
+        this.pais = pais;
       });
     });
   }
